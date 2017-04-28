@@ -21,6 +21,37 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "vue": "^2.1.10",
-    "vuetify": "^0.10.4"
-  }
+    "vuetify": "^0.10.4",
+    "webpack": "^2.4.1"
+  },
+  "name": "HelpDesk2",
+  "version": "1.0.0",
+  "main": "webpack.mix.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "css-loader": "^0.28.0",
+    "lodash": "^4.17.4",
+    "rupture": "^0.6.2",
+    "style-loader": "^0.16.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue": "^2.2.6",
+    "vuetify": "^0.10.4",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idrys/HelpDesk2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/idrys/HelpDesk2/issues"
+  },
+  "homepage": "https://github.com/idrys/HelpDesk2#readme",
+  "description": ""
 }

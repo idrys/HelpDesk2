@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -1676,13 +1676,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       message: "Nie działa drukarka",
-      desktopNr: "322"
+      desktopNr: "322",
+      value: ''
     };
+  },
+
+
+  methods: {
+    updateValue: function updateValue(t) {
+
+      console.log(t);
+      /*
+                var formattedValue = value
+                  // Remove whitespace on either side
+                  .trim()
+                  // Shorten to 2 decimal places
+                  .slice(0, value.indexOf('.') + 3)
+                // If the value was not already normalized,
+                // manually override it to conform
+                if (formattedValue !== value) {
+                  this.$refs.input.value = formattedValue
+                }
+                // Emit the number value through the input event
+                this.$emit('input', Number(formattedValue))
+                */
+    }
   },
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -31762,10 +31787,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('v-text-field', {
     attrs: {
+      "single-line": "",
       "name": "desktopNr",
       "label": "np: 201",
-      "prepend-icon": "info",
-      "single-line": ""
+      "prepend-icon": "info"
+    },
+    on: {
+      "input": function($event) {
+        _vm.updateValue(_vm.value)
+      }
+    },
+    model: {
+      value: (_vm.value),
+      callback: function($$v) {
+        _vm.value = $$v
+      },
+      expression: "value"
     }
   })], 1)], 1)
 },staticRenderFns: []}

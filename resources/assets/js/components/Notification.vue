@@ -5,10 +5,12 @@
     </v-col>
     <v-col xs6>
       <v-text-field
+              single-line
               name="desktopNr"
               label="np: 201"
               prepend-icon="info"
-              single-line
+              v-model:value="value"
+              v-on:input="updateValue(value)"
       ></v-text-field>
     </v-col>
   </v-row>
@@ -19,14 +21,36 @@
       data(){
         return{
           message: "Nie działa drukarka",
-          desktopNr: "322"
+          desktopNr: "322",
+          value: ''
         }
       },
 
-        mounted() {
-            console.log('Component mounted.')
+
+      methods: {
+        updateValue: function (t) {
+
+          console.log(t)
+/*
+          var formattedValue = value
+            // Remove whitespace on either side
+            .trim()
+            // Shorten to 2 decimal places
+            .slice(0, value.indexOf('.') + 3)
+          // If the value was not already normalized,
+          // manually override it to conform
+          if (formattedValue !== value) {
+            this.$refs.input.value = formattedValue
+          }
+          // Emit the number value through the input event
+          this.$emit('input', Number(formattedValue))
+          */
         }
+      },
+      mounted() {
+        console.log('Component mounted.')
+      }
     }
 </script>
 
-https://youtu.be/pTVCW5k4piU
+//https://youtu.be/pTVCW5k4piU

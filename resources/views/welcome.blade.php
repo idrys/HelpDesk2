@@ -69,8 +69,6 @@
     <body>
 
       <div id="app">
-        <h2>Notification</h2>
-
 
       <v-row>
         <v-col xs10 offset-xs1>
@@ -101,15 +99,13 @@
               <v-card-row  height="10px"></v-card-row>
 
 
-              <notification></notification>
+              <notification>Test</notification>
 
-
+    
               <v-row class="text-xs-center">
                 <v-col xs12 class="text-xs-center">
                   <div>
-                    <v-btn light default>
-                      <a href="{{route('sendEmail')}}">Wyślij</a></v-btn>
-
+                    <v-btn light default><a href="{{route('sendEmail')}}">Wyślij</a></v-btn>
                   </div>
                 </v-col>
               </v-row>
