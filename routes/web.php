@@ -16,3 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/email', 'HomeController@email')->name('sendEmail');
+
+Route::resource('/test', 'NotificationController');
+
+/*
+Route::get('/{vue_capture?}', function () {
+   return view('welcome');
+ })->where('vue_capture', '[\/\w\.-]*');
+ */

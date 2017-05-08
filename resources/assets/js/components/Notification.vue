@@ -17,19 +17,30 @@
 </template>
 
 <script>
+
     export default {
       data(){
         return{
           message: "Nie działa drukarka",
           desktopNr: "322",
           value: ''
+
         }
       },
-
-
+      /*
+      created: function(){
+          Vue.http.get("/test")
+          .then(function(resp){
+              if(typeof resp.data == 'string') {
+                 resp.data = JSON.parse(resp.data);
+              }
+              this.posts=resp.data.data.children;
+              console.log(this.posts);
+          });
+      },
+*/
       methods: {
         updateValue: function (t) {
-
           console.log(t)
 /*
           var formattedValue = value
@@ -48,6 +59,7 @@
         }
       },
       mounted() {
+        Vue.http.get()
         console.log('Component mounted.')
       }
     }

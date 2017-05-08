@@ -101,7 +101,7 @@
 
               <notification>Test</notification>
 
-    
+
               <v-row class="text-xs-center">
                 <v-col xs12 class="text-xs-center">
                   <div>
@@ -125,6 +125,7 @@
         </v-col>
       </v-row>
       </div>
+
 
 
       <script>
