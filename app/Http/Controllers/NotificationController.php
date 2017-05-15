@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Notification;
+use Illuminate\Support\Facades\Log;
 
 use Validator;
 
@@ -36,16 +37,12 @@ class NotificationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(array $data)
+    public function create(Request $request)
     {
-      console.log($data);
+      //Log::info($request);
 
-        return Notification::create([
-          'desktopNr' => $data['desktopNr'],
-          'email' => $data['email'],
-          'tephon' => $data['tephon'],
-          'message' => $data['message']
-        ]);
+      //echo "tsd";
+
     }
 
     /**
@@ -54,9 +51,17 @@ class NotificationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(array $data)
     {
-        console.log($request);
+      echo "Kontroler store";
+      echo "\n";
+      //$adress = $request->all();
+      //dd($request);
+      //echo $request;
+
+      //dd($adress->desktopNr);
+      //echo $adress;
+        //console.log($request);
     }
 
     /**
@@ -67,7 +72,8 @@ class NotificationController extends Controller
      */
     public function show($id)
     {
-        //
+        console.log("Controller show");
+        console.log($id);
     }
 
     /**
@@ -78,7 +84,8 @@ class NotificationController extends Controller
      */
     public function edit($id)
     {
-        //
+        console.log("Controller edit");
+        console.log($id);
     }
 
     /**

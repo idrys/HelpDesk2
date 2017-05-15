@@ -111,6 +111,15 @@
               </v-row>
               <br />
 
+              <v-row class="text-xs-center">
+                <v-col xs12 class="text-xs-center">
+                  <div>
+                    <v-btn light default><a @click=savePost>Wyślij nr 2</a></v-btn>
+                  </div>
+                </v-col>
+              </v-row>
+              <br />
+
               <v-card-text class="blue-grey darken-3 white--text">
 
               </v-card-text>

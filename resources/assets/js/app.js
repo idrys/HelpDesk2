@@ -24,24 +24,25 @@ var apiURL = 'http://localhost:8000/test';
  Vue.use(VueResource);
 
 Vue.component('notification', require('./components/Notification.vue'));
-//Vue.component('datafetching', require('./components/DataFetching.vue'));
-//Vue.component('notification', require('./components/Example.vue'));
 
-/*
-Vue.http.get(link).then(function(response){
-    data.list = response.bodyText;
-    console.log(data.list);
-}, function(error){
-    console.log(error.statusText);
-});
-*/
 
 const app = new Vue({
     el: '#app',
+
+    headers:{
+      'X-CSRF-TOKEN':  document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    },
+
     data: function() {
         return {
 
             items: [{'test':'test'}],
+            post: [{
+              'desktopNr': '232',
+              'email': 'slawek@tgs.pl',
+              'message': 'Nowa wiadomość',
+
+            }]
         };
     },
 
@@ -65,10 +66,21 @@ const app = new Vue({
       },
 
       savePost: function(){
-            this.$http.post('/posts', this.post)
-            .success(function(post){
-                router.go('/')
+        Vue.http.interceptors.push((request, next) => {
+          request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
+          next();
+        });
+
+        this.$http.post(apiURL , this.post )
+          .then(function (response) {
+                  // Success
+              console.log("Sukces");
+              console.log(response.data)
+          },function (response) {
+                  // Error
+                  //console.log(response.data)
           });
+
       },
 
     }

@@ -799,24 +799,24 @@ Vue.use(VueRouter);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_resource__["a" /* default */]);
 
 Vue.component('notification', __webpack_require__(35));
-//Vue.component('datafetching', require('./components/DataFetching.vue'));
-//Vue.component('notification', require('./components/Example.vue'));
-
-/*
-Vue.http.get(link).then(function(response){
-    data.list = response.bodyText;
-    console.log(data.list);
-}, function(error){
-    console.log(error.statusText);
-});
-*/
 
 var app = new Vue({
     el: '#app',
+
+    headers: {
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    },
+
     data: function data() {
         return {
 
-            items: [{ 'test': 'test' }]
+            items: [{ 'test': 'test' }],
+            post: [{
+                'desktopNr': '232',
+                'email': 'slawek@tgs.pl',
+                'message': 'Nowa wiadomość'
+
+            }]
         };
     },
 
@@ -838,8 +838,18 @@ var app = new Vue({
 
 
         savePost: function savePost() {
-            this.$http.post('/posts', this.post).success(function (post) {
-                router.go('/');
+            Vue.http.interceptors.push(function (request, next) {
+                request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
+                next();
+            });
+
+            this.$http.post(apiURL, this.post).then(function (response) {
+                // Success
+                console.log("Sukces");
+                console.log(response.data);
+            }, function (response) {
+                // Error
+                //console.log(response.data)
             });
         }
 
@@ -1801,7 +1811,12 @@ window.axios = __webpack_require__(11);
 
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
+/*
+window.axios.interceptors.request.use(function (config) {
+   config.headers['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
+   return config;
+});
+*/
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
