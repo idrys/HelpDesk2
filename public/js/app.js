@@ -801,59 +801,65 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_resource__["a" /* default */]);
 Vue.component('notification', __webpack_require__(35));
 
 var app = new Vue({
-    el: '#app',
+  el: '#app',
 
-    headers: {
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+  headers: {
+    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+  },
+
+  data: function data() {
+    return {
+
+      items: [{ 'test': 'test' }],
+      post: [{
+        'desktopNr': '232',
+        'email': 'slawek@tgs.pl',
+        'message': 'Nowa wiadomość'
+      }, {
+        'desktopNr': '543',
+        'email': 'olek@tgs.pl',
+        'message': 'Nowa wiadomość od Olak'
+      }]
+    };
+  },
+
+  created: function created() {
+    this.fetchData();
+    //console.log(this.items);
+  },
+
+  methods: {
+    fetchData: function fetchData() {
+      Vue.http.get(apiURL).then(function (response) {
+        var a = JSON.parse(response.bodyText);
+        //console.log(a[0].id);
+        //console.log(a[0].email);
+      }).catch(function (error) {
+        console.error("Błąd: " + error);
+      });
     },
 
-    data: function data() {
-        return {
 
-            items: [{ 'test': 'test' }],
-            post: [{
-                'desktopNr': '232',
-                'email': 'slawek@tgs.pl',
-                'message': 'Nowa wiadomość'
+    savePost: function savePost() {
+      Vue.http.interceptors.push(function (request, next) {
+        request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
+        next();
+      });
+      //Vue.http.options.emulateJSON = true;
 
-            }]
-        };
-    },
-
-    created: function created() {
-        this.fetchData();
-        //console.log(this.items);
-    },
-
-    methods: {
-        fetchData: function fetchData() {
-            Vue.http.get(apiURL).then(function (response) {
-                var a = JSON.parse(response.bodyText);
-                console.log(a[0].id);
-                console.log(a[0].email);
-            }).catch(function (error) {
-                console.error("Błąd: " + error);
-            });
-        },
-
-
-        savePost: function savePost() {
-            Vue.http.interceptors.push(function (request, next) {
-                request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
-                next();
-            });
-
-            this.$http.post(apiURL, this.post).then(function (response) {
-                // Success
-                console.log("Sukces");
-                console.log(response.data);
-            }, function (response) {
-                // Error
-                //console.log(response.data)
-            });
-        }
-
+      //this.$http.post(apiURL , this.post )
+      Vue.http.post(apiURL, this.post).then(function (response) {
+        // Success
+        console.log("Sukces wykonanie post w app.js");
+        //console.log(response.data)
+      }, function (response) {
+        // Error
+        console.log("Błąd wykonania post w app.js!");
+        //console.log(response.data)
+      });
     }
+
+  }
 });
 
 /***/ }),

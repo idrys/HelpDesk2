@@ -37,12 +37,20 @@ const app = new Vue({
         return {
 
             items: [{'test':'test'}],
-            post: [{
-              'desktopNr': '232',
-              'email': 'slawek@tgs.pl',
-              'message': 'Nowa wiadomość',
+            post:
+            [
+              {
+                'desktopNr': '232',
+                'email': 'slawek@tgs.pl',
+                'message': 'Nowa wiadomość',
+              },
+              {
+                'desktopNr': '543',
+                'email': 'olek@tgs.pl',
+                'message': 'Nowa wiadomość od Olak',
+              },
 
-            }]
+            ]
         };
     },
 
@@ -57,8 +65,8 @@ const app = new Vue({
         Vue.http.get(apiURL)
           .then( function(response) {
            var  a = JSON.parse(response.bodyText);
-            console.log(a[0].id);
-            console.log(a[0].email);
+            //console.log(a[0].id);
+            //console.log(a[0].email);
           } )
           .catch( function(error) {
               console.error("Błąd: " + error);
@@ -70,14 +78,17 @@ const app = new Vue({
           request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
           next();
         });
+        //Vue.http.options.emulateJSON = true;
 
-        this.$http.post(apiURL , this.post )
+        //this.$http.post(apiURL , this.post )
+        Vue.http.post(apiURL , this.post )
           .then(function (response) {
                   // Success
-              console.log("Sukces");
-              console.log(response.data)
+              console.log("Sukces wykonanie post w app.js");
+              //console.log(response.data)
           },function (response) {
                   // Error
+                  console.log("Błąd wykonania post w app.js!");
                   //console.log(response.data)
           });
 

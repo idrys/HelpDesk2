@@ -51,13 +51,15 @@ class NotificationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(array $data)
+    public function store(Request $request)
     {
+      //alert();
       echo "Kontroler store";
       echo "\n";
-      //$adress = $request->all();
-      //dd($request);
-      //echo $request;
+      //dd("test");
+      $adress = json_decode($request->getContent());
+      //dd($adress);
+      dd(  $adress[1]->email );
 
       //dd($adress->desktopNr);
       //echo $adress;
