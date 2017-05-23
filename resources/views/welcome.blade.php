@@ -70,6 +70,7 @@
 
       <div id="app">
 
+      <v-btn light default @click.native="testFunction">Klawisz testowy</v-btn>
       <v-row>
         <v-col xs10 offset-xs1>
           <v-card>
@@ -105,7 +106,8 @@
               <v-row class="text-xs-center">
                 <v-col xs12 class="text-xs-center">
                   <div>
-                    <v-btn light default><a href="{{route('sendEmail')}}">Wyślij</a></v-btn>
+                    <a href="{{route('sendEmail')}}"> Wyślij </a>
+                    <v-btn light default href="{{route('sendEmail')}}">Wyślij</v-btn>
                   </div>
                 </v-col>
               </v-row>
@@ -114,7 +116,7 @@
               <v-row class="text-xs-center">
                 <v-col xs12 class="text-xs-center">
                   <div>
-                    <v-btn light default><a @click=savePost>Wyślij nr 2</a></v-btn>
+                    <v-btn light default v-on:click.native="savePost">Wyślij nr 2</v-btn>
                   </div>
                 </v-col>
               </v-row>

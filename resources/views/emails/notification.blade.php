@@ -8,6 +8,12 @@ Jakiś _nowy_ napis
 Button Text
 @endcomponent
 
+<div>
+    Price: {{ $name }}
+</div>
+
+
 Thanks,<br>
+
 {{ config('app.name') }}
 @endcomponent

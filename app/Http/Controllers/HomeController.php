@@ -10,7 +10,9 @@ use App\Mail\Notification;
 class HomeController extends Controller
 {
     public function email(){
-      Mail::to("slawek@tgs.pl")->send( new Notification());
+      //$data = [{"desktopNr": "234", "email": "olek@tgs.pl"}];
+      $data = 'Test sławka';
+      Mail::to("idrys2@gmail.com")->send( new Notification($data));
       return redirect('/');
     }
 }

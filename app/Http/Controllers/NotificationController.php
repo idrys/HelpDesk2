@@ -39,9 +39,13 @@ class NotificationController extends Controller
      */
     public function create(Request $request)
     {
-      //Log::info($request);
+      echo "Kontroler create";
+      echo "\n";
 
-      //echo "tsd";
+      $data = json_decode($request->getContent());
+      //$data = $request->getContent();
+      dd(  $data[1]->email );
+
 
     }
 
@@ -51,19 +55,18 @@ class NotificationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
       //alert();
       echo "Kontroler store";
       echo "\n";
-      //dd("test");
-      $adress = json_decode($request->getContent());
-      //dd($adress);
-      dd(  $adress[1]->email );
 
-      //dd($adress->desktopNr);
-      //echo $adress;
-        //console.log($request);
+      $data = json_decode($request->getContent());
+
+      dd(  $data[1]->email );
+
+
     }
 
     /**
@@ -86,8 +89,9 @@ class NotificationController extends Controller
      */
     public function edit($id)
     {
-        console.log("Controller edit");
-        console.log($id);
+        //console.log("Controller edit");
+        //console.log($id);
+        dd($id);
     }
 
     /**

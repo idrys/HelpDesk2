@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -11,14 +12,17 @@ class Notification extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $data = "";
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    //public function __construct(Notification $data)
+    public function __construct($dane)
     {
-        //
+      $this->data =  $dane;
+      //dd($data);
     }
 
     /**
@@ -28,6 +32,10 @@ class Notification extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.notification');
+        return $this->markdown('emails.notification')
+        ->with([
+                        'name' => $this->data,
+
+                    ]);
     }
 }

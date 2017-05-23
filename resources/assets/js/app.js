@@ -56,12 +56,17 @@ const app = new Vue({
 
     created: function () {
         this.fetchData();
-        //console.log(this.items);
+        //console.log("Test");
     },
 
     methods: {
 
+      testFunction: function() {
+        console.log("Funkcja testowa");
+      },
+
       fetchData() {
+        //console.log("test fatch");
         Vue.http.get(apiURL)
           .then( function(response) {
            var  a = JSON.parse(response.bodyText);
@@ -74,13 +79,13 @@ const app = new Vue({
       },
 
       savePost: function(){
+        console.log('Test savePost');
+
         Vue.http.interceptors.push((request, next) => {
           request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
           next();
         });
         //Vue.http.options.emulateJSON = true;
-
-        //this.$http.post(apiURL , this.post )
         Vue.http.post(apiURL , this.post )
           .then(function (response) {
                   // Success
