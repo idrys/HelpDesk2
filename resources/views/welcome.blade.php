@@ -5,104 +5,153 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Laravel</title>
+        <title>Help Desk</title>
 
-        <!-- Fonts -->
+        <!-- Fonts
         <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
+-->
+        <!-- Styles
+        <link href="https://unpkg.com/vuetify@0.12.2/dist/vuetify.min.css" rel="stylesheet" type="text/css">
+      -->
+      <link href="/css/main.css" rel="stylesheet" type="text/css">
 
-        <!-- Styles -->
-        <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
     <body>
-
+<!--
       <div id="app">
+        <notification>Test</notification>
+      </div>
+    -->
+    <div class="container">
+      <div id="app" class="row">
 
-      <v-btn light default @click.native="testFunction">Klawisz testowy</v-btn>
-      <v-row>
-        <v-col xs10 offset-xs1>
+
+        <template>
+          <v-card class="grey lighten-4 elevation-0">
+            <v-card-text>
+              <v-container fluid>
+                <v-layout row>
+                  <v-flex xs4>
+                    <v-subheader>Normal with hint text</v-subheader>
+                  </v-flex>
+                  <v-flex xs8>
+                    <v-text-field
+                      name="input-1-3"
+                      label="Hint Text"
+                      single-line
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+                <v-layout row>
+                  <v-flex xs4>
+                    <v-subheader>Press</v-subheader>
+                  </v-flex>
+                  <v-flex xs8>
+                    <v-text-field
+                      name="input-2-3"
+                      label="Hint Text"
+                      class="input-group--focused"
+                      single-line
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+                <v-layout row>
+                  <v-flex xs4>
+                    <v-subheader>Focus</v-subheader>
+                  </v-flex>
+                  <v-flex xs8>
+                    <v-text-field
+                      name="input-3-3"
+                      label="Hint Text"
+                      value="Input text"
+                      class="input-group--focused"
+                      single-line
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+                <v-layout row>
+                  <v-flex xs4>
+                    <v-subheader>Normal with input text</v-subheader>
+                  </v-flex>
+                  <v-flex xs8>
+                    <v-text-field
+                      name="input-3-4"
+                      label="Hint Text"
+                      value="Input text"
+                      single-line
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+                <v-layout row>
+                  <v-flex xs4>
+                    <v-subheader>Error</v-subheader>
+                  </v-flex>
+                  <v-flex xs8>
+                    <v-text-field
+                      name="input-3-5"
+                      label="Hint Text"
+                      value="Input text"
+
+                      class="input-group--focused"
+                      single-line
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+                <v-layout row>
+                  <v-flex xs4>
+                    <v-subheader>Disabled</v-subheader>
+                  </v-flex>
+                  <v-flex xs8>
+                    <v-text-field
+                      name="input-3"
+                      label="Label Text"
+                      value="Input text"
+                      disabled
+                      single-line
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card-text>
+          </v-card>
+        </template>
+
+
           <v-card>
               <v-card-row class="blue-grey darken-1">
                 <v-card-title>
                   <span class="white--text">Zgłoszenie</span>
-                  <v-spacer></v-spacer>
-                  <!--v-menu id="space" bottom left origin="top right" transition="v-scale-transition">
-                    <v-btn icon="icon" slot="activator" class="white--text">
-                      <v-icon>more_vert</v-icon>
-                    </v-btn>
-                    <v-list>
-                      <v-list-item>
-                        <v-list-tile>
-                          <v-list-tile-title>Remove Card</v-list-tile-title>
-                        </v-list-tile>
-                      </v-list-item>
-                      <v-list-item>
-                        <v-list-tile>
-                          <v-list-tile-title>Send Feedback</v-list-tile-title>
-                        </v-list-tile>
-                      </v-list-item>
-                    </v-list>
-                  </v-menu-->
                 </v-card-title>
               </v-card-row>
               <v-card-row  height="10px"></v-card-row>
 
 
-              <notification>Test</notification>
 
 
+
+                    <v-container fluid>
+                      <v-layout row class="black--text">
+                        <v-flex xs4>
+                          <v-subheader>Focus</v-subheader>
+                        </v-flex>
+                        <v-flex xs8 >
+                          <v-text-field
+                            v-model="desktopNr"
+
+                            name="input-2"
+                            label="Label Text"
+                            value="desktopNr"
+                            class="input-group--focused"
+                            single-line
+
+
+                          ></v-text-field>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+
+
+<!--
               <v-row class="text-xs-center">
                 <v-col xs12 class="text-xs-center">
                   <div>
@@ -112,14 +161,14 @@
                 </v-col>
               </v-row>
               <br />
+-->
 
-              <v-row class="text-xs-center">
-                <v-col xs12 class="text-xs-center">
+
                   <div>
                     <v-btn light default v-on:click.native="savePost">Wyślij nr 2</v-btn>
                   </div>
-                </v-col>
-              </v-row>
+
+
               <br />
 
               <v-card-text class="blue-grey darken-3 white--text">
@@ -133,18 +182,17 @@
                 </v-btn>
               </v-card-row>
           </v-card>
-        </v-col>
-      </v-row>
+
       </div>
-
-
-
+    </div>
       <script>
             window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
           ]); ?>
       </script>
-
+<!--
+      <script src="https://unpkg.com/vuetify@0.12.2/dist/vuetify.min.js"></script>
+    -->
       <script src="js/app.js"></script>
 
     </body>

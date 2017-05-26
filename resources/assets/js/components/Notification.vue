@@ -1,19 +1,54 @@
 <template>
-  <v-row>
-    <v-col xs4 offset-xs1>
-      <v-subheader>Numer komputera DESKTOP000</v-subheader>
-    </v-col>
-    <v-col xs6>
-      <v-text-field
-              single-line
-              name="desktopNr"
-              label="np: 201"
-              prepend-icon="info"
-              v-model:value="value"
-              v-on:input="updateValue(value)"
-      ></v-text-field>
-    </v-col>
-  </v-row>
+
+  <div class="container">
+    <div class="row">
+      <v-card >
+        <v-card-text>
+          <v-container fluid>
+            <v-layout row>
+              <v-flex xs4>
+                <v-subheader>Focus</v-subheader>
+              </v-flex>
+              <v-flex xs8>
+                <v-text-field
+                  v-model="desktopNr"
+
+                  name="input-2"
+                  label="Label Text"
+                  value="desktopNr"
+
+                  class="input-group--focused"
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card-text>
+      </v-card>
+    </div>
+    <div class="row">
+      <v-row class="text-xs-center">
+        <v-col xs12 class="text-xs-center">
+          <div>
+            <v-btn light default v-on:click.native="savePost">Wyślij nr 2</v-btn>
+          </div>
+        </v-col>
+      </v-row>
+      <br />
+    </div>
+    <div class="row">
+      <div class="col-lg-4">.col-lg-4</div>
+      <div class="col-lg-4">.col-lg-4</div>
+      <div class="col-lg-4">.col-lg-4</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">.col-lg-6</div>
+      <div class="col-lg-6">.col-lg-6</div>
+    </div>
+  </div>
+
+
+
+
 </template>
 
 <script>

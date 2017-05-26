@@ -4,13 +4,17 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import Vue from 'vue'
 import Vuetify from 'vuetify'
 import VueResource from 'vue-resource'
-require('./bootstrap');
-//require('./stylus/main.styl');
+//require('./bootstrap');
+//require('./stylus/all.css');
 
 window.Vue = require('vue');
+window.Vuetify = require('vuetify');
+
 var VueRouter = require('vue-router');
+
 var link = 'http://localhost:8000/test';
 var apiURL = 'http://localhost:8000/test';
 
@@ -33,10 +37,15 @@ const app = new Vue({
       'X-CSRF-TOKEN':  document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     },
 
+
+
     data: function() {
         return {
 
-            items: [{'test':'test'}],
+            form: {
+
+
+            },
             post:
             [
               {
@@ -50,7 +59,12 @@ const app = new Vue({
                 'message': 'Nowa wiadomość od Olak',
               },
 
-            ]
+            ],
+            dane: "Test 123",
+            desktopNr: "232",
+            email: "",
+            message: "",
+            items: [{'test':'Test'}],
         };
     },
 
@@ -79,14 +93,16 @@ const app = new Vue({
       },
 
       savePost: function(){
-        console.log('Test savePost');
+        console.log(this.desktopNr);
 
         Vue.http.interceptors.push((request, next) => {
           request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
           next();
         });
         //Vue.http.options.emulateJSON = true;
-        Vue.http.post(apiURL , this.post )
+        Vue.http.get('http://localhost:8000/email' );
+
+        Vue.http.post(apiURL , this.post ) /// $
           .then(function (response) {
                   // Success
               console.log("Sukces wykonanie post w app.js");
