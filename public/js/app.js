@@ -18780,7 +18780,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
       form: {},
       post: [{
-        'desktopNr': '232',
+        'desktopNr': '232t',
         'email': 'slawek@tgs.pl',
         'message': 'Nowa wiadomość'
       }, {
@@ -18826,10 +18826,12 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
         next();
       });
-      //Vue.http.options.emulateJSON = true;
-      __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.get('http://localhost:8000/email');
 
-      __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.post(apiURL, this.post) /// $
+      this.post[0].desktopNr = this.desktopNr;
+      //Vue.http.options.emulateJSON = true;
+      //Vue.http.get('http://localhost:8000/email' );
+      //console.log(this.post[1].email);
+      __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.post(apiURL, this.post[0]) /// $
       .then(function (response) {
         // Success
         console.log("Sukces wykonanie post w app.js");

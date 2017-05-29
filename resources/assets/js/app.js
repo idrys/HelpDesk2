@@ -49,7 +49,7 @@ const app = new Vue({
             post:
             [
               {
-                'desktopNr': '232',
+                'desktopNr': '232t',
                 'email': 'slawek@tgs.pl',
                 'message': 'Nowa wiadomość',
               },
@@ -99,10 +99,12 @@ const app = new Vue({
           request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
           next();
         });
-        //Vue.http.options.emulateJSON = true;
-        Vue.http.get('http://localhost:8000/email' );
 
-        Vue.http.post(apiURL , this.post ) /// $
+        this.post[0].desktopNr = this.desktopNr;
+        //Vue.http.options.emulateJSON = true;
+        //Vue.http.get('http://localhost:8000/email' );
+//console.log(this.post[1].email);
+        Vue.http.post(apiURL , this.post[0] ) /// $
           .then(function (response) {
                   // Success
               console.log("Sukces wykonanie post w app.js");

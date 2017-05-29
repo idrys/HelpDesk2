@@ -125,10 +125,6 @@
               </v-card-row>
               <v-card-row  height="10px"></v-card-row>
 
-
-
-
-
                     <v-container fluid>
                       <v-layout row class="black--text">
                         <v-flex xs4>

@@ -8,18 +8,18 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Notification extends Mailable
+class NotificationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $data = "";
+    protected  $data ;
     /**
      * Create a new message instance.
      *
      * @return void
      */
     //public function __construct(Notification $data)
-    public function __construct($dane)
+    public function __construct( $dane)
     {
       $this->data =  $dane;
       //dd($data);
@@ -34,8 +34,9 @@ class Notification extends Mailable
     {
         return $this->markdown('emails.notification')
         ->with([
-                        'name' => $this->data,
-
+                        'desktopNr' => $this->data->desktopNr,
+                        'email'     => $this->data->email,
+                        'message'   => $this->data->message,
                     ]);
     }
 }

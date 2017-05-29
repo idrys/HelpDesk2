@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Notification;
 use Illuminate\Support\Facades\Log;
-
+use Mail;
+use App\Mail\NotificationEmail;
 use Validator;
 
 class NotificationController extends Controller
@@ -42,11 +43,19 @@ class NotificationController extends Controller
       echo "Kontroler create";
       echo "\n";
 
-      $data = json_decode($request->getContent());
+      //$data = json_decode($request->getContent());
       //$data = $request->getContent();
-      dd(  $data[1]->email );
-
-
+      //dd(  $data );
+      //Mail::to("idrys2@gmail.com")->send( new Notification($data));
+      //return redirect('/');
+      $data = json_decode($request->getContent());
+      if(is_array($data)) {
+          var_dump('To jest tablica');
+      }
+      else{
+          var_dump('To nie tablica');
+      }
+      var_dump($data);
     }
 
     /**
@@ -60,12 +69,21 @@ class NotificationController extends Controller
     {
       //alert();
       echo "Kontroler store";
+      var_dump("Kontroler store");
       echo "\n";
 
       $data = json_decode($request->getContent());
+      if(is_array($data)) {
+          var_dump('To jest tablica');
+      }
+      else{
+          var_dump('To nie tablica');
+      }
+      var_dump($data);
+      //dd(  $data[1]->email );
+      Mail::to("idrys2@gmail.com")->send( new NotificationEmail($data) );
 
-      dd(  $data[1]->email );
-
+      return redirect('/');
 
     }
 
